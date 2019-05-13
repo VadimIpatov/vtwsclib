@@ -8,5 +8,7 @@
             "email": "vadim.ipatov@zabbix.com"
         }
     ],
-    "require": {}
+    "require": {},
+    "minimum-stability": "stable",
+    "homepage": "https://github.com/VadimIpatov/vtwsclib"    
 }
