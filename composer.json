@@ -1,0 +1,12 @@
+{
+    "name": "vadimipatov/vtwsclib",
+    "description": "Fork of original vtwsclib from http://code.vtiger.com/vtiger/vtigercrm-sdk",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Vadim Ipatov",
+            "email": "vadim.ipatov@zabbix.com"
+        }
+    ],
+    "require": {}
+}
