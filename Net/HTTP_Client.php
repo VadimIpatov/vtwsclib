@@ -1,7 +1,7 @@
 <?php
 
-require_once('vtwsclib/third-party/curl_http_client.php');
-require_once('vtwsclib/third-party/Zend/Json.php');
+require_once('curl_http_client.php');
+require_once('Zend/Json.php');
 
 class Vtiger_HTTP_Client extends Curl_HTTP_Client {
 	var $_serviceurl = '';

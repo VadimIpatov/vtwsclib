@@ -8,8 +8,8 @@
  * All Rights Reserved.
  *************************************************************************************/
 
-require_once('vtwsclib/Vtiger/Net/HTTP_Client.php');
-require_once('vtwsclib/Vtiger/WSVersion.php');
+require_once('Net/HTTP_Client.php');
+require_once('WSVersion.php');
 
 /**
  * Vtiger Webservice Client
