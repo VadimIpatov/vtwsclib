@@ -2,6 +2,11 @@
     "name": "vadimipatov/vtwsclib",
     "description": "Fork of original vtwsclib from http://code.vtiger.com/vtiger/vtigercrm-sdk",
     "type": "library",
+    "keywords": [
+        "vtiger",
+        "vtigercrm",
+        "crm"
+    ],    
     "authors": [
         {
             "name": "Vadim Ipatov",
@@ -9,6 +14,6 @@
         }
     ],
     "require": {},
-    "minimum-stability": "stable",
+    "license": "vtiger Public License 1.2",
     "homepage": "https://github.com/VadimIpatov/vtwsclib"    
 }
