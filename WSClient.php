@@ -87,12 +87,12 @@ class Vtiger_WSClient {
 	 * Check if result has any error.
 	 */
 	function hasError($result) {
-		if(isset($result[success]) && $result[success] === true) {
+		if(isset($result['success']) && $result['success'] === true) {
 			$this->_lasterror = false;
 			return false;
 		}
-		if(isset($result[success])) {
-			$this->_lasterror = $result[error];
+		if(isset($result['success'])) {
+			$this->_lasterror = $result['error'];
 		}
 		else {
 			$this->_lasterror = "Unknown error";
@@ -122,9 +122,9 @@ class Vtiger_WSClient {
 			return false;
 		}
 
-		$this->_servertime   = $resultdata[result][serverTime];
-		$this->_expiretime   = $resultdata[result][expireTime];
-		$this->_servicetoken = $resultdata[result][token];
+		$this->_servertime   = $resultdata['result']['serverTime'];
+		$this->_expiretime   = $resultdata['result']['expireTime'];
+		$this->_servicetoken = $resultdata['result']['token'];
 		return true;
 	}
 
@@ -133,7 +133,7 @@ class Vtiger_WSClient {
 	 */
 	function __checkLogin() {
 		if($this->_expiretime || (time() > $this->_expiretime)) {
-			$this->doLogin($this->_serviceuser, $this->_servicepwd);
+			$this->doLogin($this->_serviceuser, $this->_servicekey);
 		}
 	}
 
@@ -171,8 +171,8 @@ class Vtiger_WSClient {
 		$this->_serviceuser = $username;
 		$this->_servicekey  = $vtigerUserAccesskey;
 
-		$this->_sessionid = $resultdata[result][sessionName];
-		$this->_userid    = $resultdata[result][userId];
+		$this->_sessionid = $resultdata['result']['sessionName'];
+		$this->_userid    = $resultdata['result']['userId'];
 		return true;
 	}
 
@@ -196,7 +196,7 @@ class Vtiger_WSClient {
 		if($this->hasError($resultdata)) {
 			return false;
 		}
-		return $resultdata[result];
+		return $resultdata['result'];
 	}
 
 	/**
@@ -226,7 +226,7 @@ class Vtiger_WSClient {
 		if($this->hasError($resultdata)) {
 			return false;
 		}
-		$modulenames = $resultdata[result][types];
+		$modulenames = $resultdata['result']['types'];
 
 		$returnvalue = Array();
 		foreach($modulenames as $modulename) {
@@ -252,7 +252,7 @@ class Vtiger_WSClient {
 		if($this->hasError($resultdata)) {
 			return false;
 		}
-		return $resultdata[result];
+		return $resultdata['result'];
 	}
 
 	/**
@@ -271,7 +271,7 @@ class Vtiger_WSClient {
 		if($this->hasError($resultdata)) {
 			return false;
 		}
-		return $resultdata[result];
+		return $resultdata['result'];
 	}
 
 	/**
@@ -296,7 +296,7 @@ class Vtiger_WSClient {
 		if($this->hasError($resultdata)) {
 			return false;
 		}
-		return $resultdata[result];
+		return $resultdata['result'];
 	}
 
 	/**
@@ -332,7 +332,7 @@ class Vtiger_WSClient {
 		if($this->hasError($resultdata)) {
 			return false;
 		}
-		return $resultdata[result];
+		return $resultdata['result'];
 	}
 }
 ?>
