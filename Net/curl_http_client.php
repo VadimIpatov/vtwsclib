@@ -7,12 +7,12 @@
  */
 
 /**
- * Curl based HTTP Client 
+ * Curl based HTTP Client
  * Simple but effective OOP wrapper around Curl php lib.
- * Contains common methods needed 
- * for getting data from url, setting referrer, credentials, 
+ * Contains common methods needed
+ * for getting data from url, setting referrer, credentials,
  * sending post data, managing cookies, etc.
- * 
+ *
  * Samle usage:
  * $curl = &new Curl_HTTP_Client();
  * $useragent = "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)";
@@ -50,14 +50,14 @@ class Curl_HTTP_Client
 	 * @param boolean debug
 	 * @access public
 	 */
-	function Curl_HTTP_Client($debug = false)
+	function __construct($debug = false)
 	{
 		$this->debug = $debug;
 		$this->init();
 	}
-	
+
 	/**
-	 * Init Curl session	 
+	 * Init Curl session
 	 * @access public
 	 */
 	function init()
@@ -72,7 +72,7 @@ class Curl_HTTP_Client
 
 		// allow redirects
 		curl_setopt($this->ch, CURLOPT_FOLLOWLOCATION, true);
-		
+
 		// use gzip if possible
 		curl_setopt($this->ch,CURLOPT_ENCODING , 'gzip, deflate');
 
@@ -95,7 +95,7 @@ class Curl_HTTP_Client
 
 	/**
 	 * Set referrer
-	 * @param string referrer url 
+	 * @param string referrer url
 	 * @access public
 	 */
 	function set_referrer($referrer_url)
@@ -137,7 +137,7 @@ class Curl_HTTP_Client
 
 
 	/**
-	 * Send post data to target URL	 
+	 * Send post data to target URL
 	 * return data returned from url or false if error occured
 	 * @param string url
 	 * @param mixed post data (assoc array ie. $foo['post_var_name'] = $value or as string like var=val1&var2=val2)
@@ -176,7 +176,7 @@ class Curl_HTTP_Client
 		//generate post string
 		$post_array = array();
 		if(is_array($postdata))
-		{		
+		{
 			foreach($postdata as $key=>$value)
 			{
 				$post_array[] = urlencode($key) . "=" . urlencode($value);
@@ -189,7 +189,7 @@ class Curl_HTTP_Client
 				echo "Url: $url\nPost String: $post_string\n";
 			}
 		}
-		else 
+		else
 		{
 			$post_string = $postdata;
 		}
@@ -219,9 +219,9 @@ class Curl_HTTP_Client
 	}
 
 	/**
-	 * fetch data from target URL	 
+	 * fetch data from target URL
 	 * return data returned from url or false if error occured
-	 * @param string url	 
+	 * @param string url
 	 * @param string ip address to bind (default null)
 	 * @param int timeout in sec for complete curl operation (default 5)
 	 * @return string data
@@ -273,8 +273,8 @@ class Curl_HTTP_Client
 
 	/**
 	 * Fetch data from target URL
-	 * and store it directly to file	 	 
-	 * @param string url	 
+	 * and store it directly to file
+	 * @param string url
 	 * @param resource value stream resource(ie. fopen)
 	 * @param string ip address to bind (default null)
 	 * @param int timeout in sec for complete curl operation (default 5)
@@ -326,7 +326,7 @@ class Curl_HTTP_Client
 	}
 
 	/**
-	 * Send multipart post data to the target URL	 
+	 * Send multipart post data to the target URL
 	 * return data returned from url or false if error occured
 	 * (contribution by vule nikolic, vule@dinke.net)
 	 * @param string url
@@ -443,20 +443,20 @@ class Curl_HTTP_Client
 		curl_setopt ($this->ch, CURLOPT_COOKIEJAR, $cookie_file);
 		curl_setopt ($this->ch, CURLOPT_COOKIEFILE, $cookie_file);
 	}
-	
+
 	/**
 	 * Set custom cookie
 	 * @param string cookie
 	 * @access public
 	 */
 	function set_cookie($cookie)
-	{		
+	{
 		curl_setopt ($this->ch, CURLOPT_COOKIE, $cookie);
 	}
 
 	/**
-	 * Get last URL info 
-	 * usefull when original url was redirected to other location	
+	 * Get last URL info
+	 * usefull when original url was redirected to other location
 	 * @access public
 	 * @return string url
 	 */
@@ -466,7 +466,7 @@ class Curl_HTTP_Client
 	}
 
 	/**
-	 * Get http response code	 
+	 * Get http response code
 	 * @access public
 	 * @return int
 	 */
@@ -487,7 +487,7 @@ class Curl_HTTP_Client
 
 		return $err;
 	}
-	
+
 	/**
 	 * Close curl session and free resource
 	 * Usually no need to call this function directly
