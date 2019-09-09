@@ -302,9 +302,9 @@ class Vtiger_WSClient {
 	/**
 	 * Invoke custom operation
 	 *
-	 * @param String $method Name of the webservice to invoke
-	 * @param Object $type null or parameter values to method
-	 * @param String $params optional (POST/GET)
+	 * @param String     $method Name of the webservice to invoke
+	 * @param array|null $params Parameter values to method
+	 * @param String     $type   Optional (POST|GET)
 	 */
 	function doInvoke($method, $params = null, $type = 'POST') {
 		// Perform re-login if required
