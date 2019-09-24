@@ -132,7 +132,7 @@ class Vtiger_WSClient {
 	 * Check and perform login if requried.
 	 */
 	function __checkLogin() {
-		if($this->_expiretime || (time() > $this->_expiretime)) {
+		if (!isset($this->_expiretime) || $this->_expiretime <= $this->_servertime) {
 			$this->doLogin($this->_serviceuser, $this->_servicekey);
 		}
 	}
